@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Expanse Tracker</title>
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>Expanse Tracker</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form action="/" method="post">
+
+                <label for="totalExpense" class="form-label">Total Expense</label>
+                <input type="number" class="form-control" name="expanse" value="<%= edit===true?expanse:''%>"><br><br>
+                <label for="description" class="form-label">Choose Description</label>
+                <input type="text" class="form-control" name="description" value="<%= edit===true?description:''%>"><br><br>
+                <label for="category" class="form-label">Choose category</label>
+                <input type="text" class="form-control" name="category" value="<%= edit===true?category:''%>"><br><br>
+                <button type="submit" class="btn btn-primary">Add Expense</button>
+            </form>
+        </div>
+        <hr>
+        <div class="container">
+            <ul class="item-list">
+                <% Expanses.forEach(function(Expanse){%>
+                    <li class="list-items">
+                        <span>Category: <%=Expanse.category%></span>
+                        <span>Expanse: <%=Expanse.expanse%></span>
+                        <span>Description: <%=Expanse.description%></span>
+                        <a href="/edit/<%=Expanse.id%>" class="btn btn-primary">Edit</a>
+                        <a href="/delete/<%=Expanse.id%>" class="btn btn-primary">Delete</a>
+                    </li>
+                    <% });%>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>
